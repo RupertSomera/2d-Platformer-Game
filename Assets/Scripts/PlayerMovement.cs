@@ -23,8 +23,12 @@ public class PlayerMovement : MonoBehaviour
     private float DashingTime = 0.2f;
     private float DashingCoolDown = 1f;
     private bool IsFacingRight = true;
+    
+
 
     [SerializeField] private TrailRenderer tr;
+
+  
 
 
     private void Update()
@@ -47,7 +51,10 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Dash());
         }
 
+        
+
     }
+
 
     private void FixedUpdate()
     {
