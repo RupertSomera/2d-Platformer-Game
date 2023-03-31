@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float MovementSpeed;
     public Rigidbody2D rb;
+    public HealthSystem healthSystem;
 
     public float JumpForce = 20f;
     public Transform feet;
@@ -65,12 +66,12 @@ public class PlayerMovement : MonoBehaviour
         //Movement Audio
         if (GetComponent<Rigidbody2D>().velocity.magnitude > 0 && !IsMoving)
         {
-            audioSource.Play();
+            //audioSource.Play();
             IsMoving = true;
         }
         if (GetComponent<Rigidbody2D>().velocity.magnitude == 0 && IsMoving)
         {
-            audioSource.Stop();
+            //audioSource.Stop();
             IsMoving = false;
         }
 
@@ -140,6 +141,10 @@ public class PlayerMovement : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
+        if(collision.tag == "Bullet")
+        {
+            healthSystem.TakeDamage(1);
+        }
     }
 
     public void IsLanding(bool dec)

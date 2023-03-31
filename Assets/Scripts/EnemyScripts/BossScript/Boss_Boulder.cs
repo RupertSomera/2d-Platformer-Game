@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EnemyBulletScript : MonoBehaviour
+public class Boss_Boulder : MonoBehaviour
 {
 
     private GameObject Player;
@@ -19,7 +19,7 @@ public class EnemyBulletScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         Vector3 direction = Player.transform.position - transform.position;
-        rb.velocity = new Vector2(direction.x, direction.y).normalized * force; 
+        rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
 
         float rotate = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rotate + 179);
@@ -30,7 +30,7 @@ public class EnemyBulletScript : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer > 6)
+        if (timer > 8)
         {
             Destroy(gameObject);
         }
@@ -40,11 +40,11 @@ public class EnemyBulletScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            
+
             Destroy(gameObject);
-            
+
         }
-        
+
     }
 
 }
